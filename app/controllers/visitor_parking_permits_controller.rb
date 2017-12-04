@@ -16,6 +16,7 @@ class VisitorParkingPermitsController < ApplicationController
   end
 
   def show
+    @visit = Visit.new
     @visitor_parking_permit = VisitorParkingPermit.find(params[:id])
 
     render("visitor_parking_permits/show.html.erb")
