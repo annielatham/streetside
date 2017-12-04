@@ -18,14 +18,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for resident_id -->
-      <div class="form-group">
-        <label for="resident_id" class="control-label">
-          Resident
-        </label>
-
-        <%= select_tag(:resident_id, options_from_collection_for_select(User.all, :id, :username, @resident_parking_permit.resident_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <!-- Label and input for vehicle_id -->
       <div class="form-group">

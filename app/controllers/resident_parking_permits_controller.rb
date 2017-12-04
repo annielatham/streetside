@@ -49,8 +49,6 @@ class ResidentParkingPermitsController < ApplicationController
 
   def update
     @resident_parking_permit = ResidentParkingPermit.find(params[:id])
-
-    @resident_parking_permit.resident_id = params[:resident_id]
     @resident_parking_permit.vehicle_id = params[:vehicle_id]
     @resident_parking_permit.purchase_date = params[:purchase_date]
     @resident_parking_permit.expiration_date = params[:expiration_date]
