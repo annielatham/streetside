@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :resident_parking_permits,
+             :foreign_key => "resident_id",
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations
