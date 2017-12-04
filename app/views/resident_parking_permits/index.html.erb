@@ -18,8 +18,20 @@
 
       <% @resident_parking_permits.each do |resident_parking_permit| %>
       <tr>
-        <td><%= resident_parking_permit.resident_car_owner.username %></td>
-        <td><%= resident_parking_permit.permitted_resident_vehicle.nickname %></td>
+        <td>
+          <% if resident_parking_permit.resident_car_owner.present? %>
+            <a href="/users/<%= resident_parking_permit.resident_car_owner.id %>">
+              <%= resident_parking_permit.resident_car_owner.username %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if resident_parking_permit.permitted_resident_vehicle.present? %>
+            <a href="/vehicles/<%= resident_parking_permit.permitted_resident_vehicle.id %>">
+              <%= resident_parking_permit.permitted_resident_vehicle.nickname %>
+            </a>
+          <% end %>
+        </td>
         <td><%= resident_parking_permit.purchase_date %></td>
         <td><%= resident_parking_permit.expiration_date %></td>
         <td>

@@ -18,8 +18,20 @@
 
       <% @visits.each do |visit| %>
       <tr>
-        <td><%= visit.visiting_vehicle.nickname %></td>
-        <td><%= visit.visitor_permit.resident_id %></td>
+        <td>
+          <% if visit.visiting_vehicle.present? %>
+            <a href="/vehicles/<%= visit.visiting_vehicle.id %>">
+              <%= visit.visiting_vehicle.nickname %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if visit.visitor_permit.present? %>
+            <a href="/visitor_parking_permits/<%= visit.visitor_permit.id %>">
+              <%= visit.visitor_permit.resident_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= visit.start_time %></td>
         <td><%= visit.end_time %></td>
         <td>

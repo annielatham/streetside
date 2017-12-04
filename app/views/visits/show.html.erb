@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Vehicle</dt>
-      <dd><%= @visit.vehicle_id %></dd>
+      <dd>
+        <% if @visit.visiting_vehicle.present? %>
+          <a href="/vehicles/<%= @visit.vehicle_id %>">
+            <%= @visit.visiting_vehicle.nickname %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Permit</dt>
-      <dd><%= @visit.permit_id %></dd>
+      <dd>
+        <% if @visit.visitor_permit.present? %>
+          <a href="/visitor_parking_permits/<%= @visit.permit_id %>">
+            <%= @visit.visitor_permit.resident_id %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Start time</dt>
       <dd><%= @visit.start_time %></dd>

@@ -17,7 +17,13 @@
 
       <% @visitor_parking_permits.each do |visitor_parking_permit| %>
       <tr>
-        <td><%= visitor_parking_permit.resident_host.username %></td>
+        <td>
+          <% if visitor_parking_permit.resident_host.present? %>
+            <a href="/users/<%= visitor_parking_permit.resident_host.id %>">
+              <%= visitor_parking_permit.resident_host.username %>
+            </a>
+          <% end %>
+        </td>
         <td><%= visitor_parking_permit.purchase_date %></td>
         <td><%= visitor_parking_permit.expiration_date %></td>
         <td>

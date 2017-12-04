@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Resident</dt>
-      <dd><%= @resident_parking_permit.resident_id %></dd>
+      <dd>
+        <% if @resident_parking_permit.resident_car_owner.present? %>
+          <a href="/users/<%= @resident_parking_permit.resident_id %>">
+            <%= @resident_parking_permit.resident_car_owner.username %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Vehicle</dt>
-      <dd><%= @resident_parking_permit.vehicle_id %></dd>
+      <dd>
+        <% if @resident_parking_permit.permitted_resident_vehicle.present? %>
+          <a href="/vehicles/<%= @resident_parking_permit.vehicle_id %>">
+            <%= @resident_parking_permit.permitted_resident_vehicle.nickname %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Purchase date</dt>
       <dd><%= @resident_parking_permit.purchase_date %></dd>
