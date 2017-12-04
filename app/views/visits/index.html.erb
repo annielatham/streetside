@@ -18,7 +18,7 @@
 
       <% @visits.each do |visit| %>
       <tr>
-        <td><%= visit.vehicle_id %></td>
+        <td><%= visit.visiting_vehicle.nickname %></td>
         <td><%= visit.permit_id %></td>
         <td><%= visit.start_time %></td>
         <td><%= visit.end_time %></td>
