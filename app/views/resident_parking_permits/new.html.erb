@@ -24,7 +24,7 @@
           Resident
         </label>
 
-        <input type="text" id="resident_id" name="resident_id" placeholder="Resident" class="form-control" value="<%= @resident_parking_permit.resident_id %>">
+        <%= select_tag(:resident_id, options_from_collection_for_select(User.all, :id, :username, @resident_parking_permit.resident_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for vehicle_id -->
