@@ -10,7 +10,7 @@ class ResidentParkingPermitsController < ApplicationController
   end
 
   def index
-    @resident_parking_permits = ResidentParkingPermit.all
+    @resident_parking_permits = ResidentParkingPermit.page(params[:page]).per(10)
 
     render("resident_parking_permits/index.html.erb")
   end
