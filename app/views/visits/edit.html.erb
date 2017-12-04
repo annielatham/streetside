@@ -33,7 +33,7 @@
           Permit
         </label>
 
-        <input type="text" id="permit_id" name="permit_id" placeholder="Permit" class="form-control" value="<%= @visit.permit_id %>">
+        <%= select_tag(:permit_id, options_from_collection_for_select(VisitorParkingPermit.all, :id, :resident_id, @visit.permit_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for start_time -->
