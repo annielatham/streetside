@@ -1,5 +1,7 @@
 ActiveAdmin.register Visit do
 
+ permit_params :vehicle_id, :permit_id, :start_time, :end_time
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
