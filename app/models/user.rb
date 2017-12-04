@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :visitor_pass_loans,
+             :through => :visitor_parking_permits,
+             :source => :assigned_visits
+
   # Validations
 
   # Include default devise modules. Others available are:

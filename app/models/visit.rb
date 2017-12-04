@@ -12,6 +12,10 @@ class Visit < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :resident_host,
+             :through => :visitor_permit,
+             :source => :resident_host
+
   # Validations
 
 end
