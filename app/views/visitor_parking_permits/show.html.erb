@@ -29,3 +29,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Visitor parking permit has many assigned_visits -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Assigned Visits
+      </li>
+
+      <% @visitor_parking_permit.assigned_visits.each do |visit| %>
+        <li class="list-group-item">
+          <a href="/visits/<%= visit.id %>">
+            <%= visit.vehicle_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/visits/<%= visit.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/visits/<%= visit.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_visit/<%= visit.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

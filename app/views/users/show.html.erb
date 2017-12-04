@@ -32,3 +32,127 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many resident_parking_permits -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Resident Parking Permits
+      </li>
+
+      <% @user.resident_parking_permits.each do |resident_parking_permit| %>
+        <li class="list-group-item">
+          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>">
+            <%= resident_parking_permit.resident_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many visitor_parking_permits -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Visitor Parking Permits
+      </li>
+
+      <% @user.visitor_parking_permits.each do |visitor_parking_permit| %>
+        <li class="list-group-item">
+          <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>">
+            <%= visitor_parking_permit.resident_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_visitor_parking_permit/<%= visitor_parking_permit.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many visitor_pass_loans -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Visitor Pass Loans
+      </li>
+
+      <% @user.visitor_pass_loans.each do |visit| %>
+        <li class="list-group-item">
+          <a href="/visits/<%= visit.id %>">
+            <%= visit.vehicle_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/visits/<%= visit.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/visits/<%= visit.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_visit/<%= visit.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many permitted_resident_vehicles -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Permitted Resident Vehicles
+      </li>
+
+      <% @user.permitted_resident_vehicles.each do |vehicle| %>
+        <li class="list-group-item">
+          <a href="/vehicles/<%= vehicle.id %>">
+            <%= vehicle.nickname %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/vehicles/<%= vehicle.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/vehicles/<%= vehicle.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_vehicle/<%= vehicle.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
