@@ -24,8 +24,11 @@
         <td><%= resident_parking_permit.expiration_date %></td>
         <td>
           <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">Show</a>
-          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == resident_parking_permit.resident_car_owner %>
+            <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

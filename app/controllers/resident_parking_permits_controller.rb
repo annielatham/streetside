@@ -1,4 +1,14 @@
 class ResidentParkingPermitsController < ApplicationController
+  before_action :current_user_must_be_resident_parking_permit_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_resident_parking_permit_user
+    resident_parking_permit = ResidentParkingPermit.find(params[:id])
+
+    unless current_user == resident_parking_permit.resident_car_owner
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @resident_parking_permits = ResidentParkingPermit.all
 
