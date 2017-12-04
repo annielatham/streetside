@@ -10,6 +10,10 @@ class Vehicle < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :resident_car_owners,
+             :through => :resident_parking_permits,
+             :source => :resident_car_owner
+
   # Validations
 
 end

@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :permitted_resident_vehicles,
+             :through => :resident_parking_permits,
+             :source => :permitted_resident_vehicle
+
   has_many   :visitor_pass_loans,
              :through => :visitor_parking_permits,
              :source => :assigned_visits
