@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Resident parking permits
+    <a href="/resident_parking_permits/new" class="btn btn-lg btn-success">New Resident parking permit</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Resident</th>
+        <th>Vehicle</th>
+        <th>Purchase date</th>
+        <th>Expiration date</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @resident_parking_permits.each do |resident_parking_permit| %>
+      <tr>
+        <td><%= resident_parking_permit.resident_id %></td>
+        <td><%= resident_parking_permit.vehicle_id %></td>
+        <td><%= resident_parking_permit.purchase_date %></td>
+        <td><%= resident_parking_permit.expiration_date %></td>
+        <td>
+          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">Show</a>
+          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

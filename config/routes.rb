@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Resident_parking_permit resource:
+  # CREATE
+  get "/resident_parking_permits/new", :controller => "resident_parking_permits", :action => "new"
+  post "/create_resident_parking_permit", :controller => "resident_parking_permits", :action => "create"
+
+  # READ
+  get "/resident_parking_permits", :controller => "resident_parking_permits", :action => "index"
+  get "/resident_parking_permits/:id", :controller => "resident_parking_permits", :action => "show"
+
+  # UPDATE
+  get "/resident_parking_permits/:id/edit", :controller => "resident_parking_permits", :action => "edit"
+  post "/update_resident_parking_permit/:id", :controller => "resident_parking_permits", :action => "update"
+
+  # DELETE
+  get "/delete_resident_parking_permit/:id", :controller => "resident_parking_permits", :action => "destroy"
+  #------------------------------
+
   # Routes for the Visitor_parking_permit resource:
   # CREATE
   get "/visitor_parking_permits/new", :controller => "visitor_parking_permits", :action => "new"
