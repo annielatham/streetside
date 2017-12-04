@@ -33,7 +33,7 @@
           Vehicle
         </label>
 
-        <input type="text" id="vehicle_id" name="vehicle_id" placeholder="Vehicle" class="form-control" value="<%= @resident_parking_permit.vehicle_id %>">
+        <%= select_tag(:vehicle_id, options_from_collection_for_select(Vehicle.all, :id, :nickname, @resident_parking_permit.vehicle_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for purchase_date -->
