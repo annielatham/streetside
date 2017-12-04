@@ -48,8 +48,6 @@ class VisitorParkingPermitsController < ApplicationController
 
   def update
     @visitor_parking_permit = VisitorParkingPermit.find(params[:id])
-
-    @visitor_parking_permit.resident_id = params[:resident_id]
     @visitor_parking_permit.purchase_date = params[:purchase_date]
     @visitor_parking_permit.expiration_date = params[:expiration_date]
 
