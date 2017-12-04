@@ -1,5 +1,5 @@
 class VisitorParkingPermitsController < ApplicationController
-  before_action :current_user_must_be_visitor_parking_permit_user, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_visitor_parking_permit_user, :only => [:show, :edit, :update, :destroy]
 
   def current_user_must_be_visitor_parking_permit_user
     visitor_parking_permit = VisitorParkingPermit.find(params[:id])
