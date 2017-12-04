@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @vehicle.errors.any? %>
+  <% @vehicle.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Vehicle #<%= @vehicle.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_vehicle/<%= @vehicle.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @vehicle.year %>">
+      </div>
+
+      <!-- Label and input for make -->
+      <div class="form-group">
+        <label for="make" class="control-label">
+          Make
+        </label>
+
+        <input type="text" id="make" name="make" placeholder="Make" class="form-control" value="<%= @vehicle.make %>">
+      </div>
+
+      <!-- Label and input for model -->
+      <div class="form-group">
+        <label for="model" class="control-label">
+          Model
+        </label>
+
+        <input type="text" id="model" name="model" placeholder="Model" class="form-control" value="<%= @vehicle.model %>">
+      </div>
+
+      <!-- Label and input for color -->
+      <div class="form-group">
+        <label for="color" class="control-label">
+          Color
+        </label>
+
+        <input type="text" id="color" name="color" placeholder="Color" class="form-control" value="<%= @vehicle.color %>">
+      </div>
+
+      <!-- Label and input for nickname -->
+      <div class="form-group">
+        <label for="nickname" class="control-label">
+          Nickname
+        </label>
+
+        <input type="text" id="nickname" name="nickname" placeholder="Nickname" class="form-control" value="<%= @vehicle.nickname %>">
+      </div>
+
+      <!-- Label and input for license_plate -->
+      <div class="form-group">
+        <label for="license_plate" class="control-label">
+          License plate
+        </label>
+
+        <input type="text" id="license_plate" name="license_plate" placeholder="License plate" class="form-control" value="<%= @vehicle.license_plate %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Vehicle
+      </button>
+      or
+      <a href="/vehicles/<%= @vehicle.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
