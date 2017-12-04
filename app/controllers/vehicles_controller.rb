@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.page(params[:page]).per(10)
+    @q = Vehicle.ransack(params[:q])
+    @vehicles = @q.result(:distinct => true).includes(:resident_parking_permits, :pass_uses, :resident_car_owners).page(params[:page]).per(10)
 
     render("vehicles/index.html.erb")
   end

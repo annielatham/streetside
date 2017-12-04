@@ -1,6 +1,7 @@
 class VisitsController < ApplicationController
   def index
-    @visits = Visit.page(params[:page]).per(10)
+    @q = Visit.ransack(params[:q])
+    @visits = @q.result(:distinct => true).includes(:visiting_vehicle, :visitor_permit, :resident_host).page(params[:page]).per(10)
 
     render("visits/index.html.erb")
   end

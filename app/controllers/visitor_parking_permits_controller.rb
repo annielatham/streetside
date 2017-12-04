@@ -10,7 +10,8 @@ class VisitorParkingPermitsController < ApplicationController
   end
 
   def index
-    @visitor_parking_permits = current_user.visitor_parking_permits.page(params[:page]).per(10)
+    @q = current_user.visitor_parking_permits.ransack(params[:q])
+      @visitor_parking_permits = @q.result(:distinct => true).includes(:resident_host, :assigned_visits).page(params[:page]).per(10)
 
     render("visitor_parking_permits/index.html.erb")
   end
