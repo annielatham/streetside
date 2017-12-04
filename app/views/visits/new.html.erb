@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @visit.errors.any? %>
+  <% @visit.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Visit</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_visit" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for vehicle_id -->
+      <div class="form-group">
+        <label for="vehicle_id" class="control-label">
+          Vehicle
+        </label>
+
+        <input type="text" id="vehicle_id" name="vehicle_id" placeholder="Vehicle" class="form-control" value="<%= @visit.vehicle_id %>">
+      </div>
+
+      <!-- Label and input for permit_id -->
+      <div class="form-group">
+        <label for="permit_id" class="control-label">
+          Permit
+        </label>
+
+        <input type="text" id="permit_id" name="permit_id" placeholder="Permit" class="form-control" value="<%= @visit.permit_id %>">
+      </div>
+
+      <!-- Label and input for start_time -->
+      <div class="form-group">
+        <label for="start_time" class="control-label">
+          Start time
+        </label>
+
+        <input type="text" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @visit.start_time %>">
+      </div>
+
+      <!-- Label and input for end_time -->
+      <div class="form-group">
+        <label for="end_time" class="control-label">
+          End time
+        </label>
+
+        <input type="text" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%= @visit.end_time %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Visit
+      </button>
+      or
+      <a href="/visits">Cancel</a>
+    </form>
+  </div>
+</div>
