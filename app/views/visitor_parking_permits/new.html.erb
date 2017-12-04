@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @visitor_parking_permit.errors.any? %>
+  <% @visitor_parking_permit.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Visitor Parking Permit</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_visitor_parking_permit" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for resident_id -->
+      <div class="form-group">
+        <label for="resident_id" class="control-label">
+          Resident
+        </label>
+
+        <input type="text" id="resident_id" name="resident_id" placeholder="Resident" class="form-control" value="<%= @visitor_parking_permit.resident_id %>">
+      </div>
+
+      <!-- Label and input for purchase_date -->
+      <div class="form-group">
+        <label for="purchase_date" class="control-label">
+          Purchase date
+        </label>
+
+        <input type="text" id="purchase_date" name="purchase_date" placeholder="Purchase date" class="form-control" value="<%= @visitor_parking_permit.purchase_date %>">
+      </div>
+
+      <!-- Label and input for expiration_date -->
+      <div class="form-group">
+        <label for="expiration_date" class="control-label">
+          Expiration date
+        </label>
+
+        <input type="text" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @visitor_parking_permit.expiration_date %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Visitor Parking Permit
+      </button>
+      or
+      <a href="/visitor_parking_permits">Cancel</a>
+    </form>
+  </div>
+</div>
