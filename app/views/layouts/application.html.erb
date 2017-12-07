@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><i class="fa fa-road" aria-hidden="true"></i>streetside</title>
+  <link rel="icon" href="../favicon.ico">
+  <title>streetside</title>
 
-  <link rel="icon" href="/app/assets/images/favicon.png"> 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600|Palanquin:600,700" rel="stylesheet">
-  
-  
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400|Palanquin:400" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
   <style>
     /* Only necessary if you are using navbar-fixed-top */
+
     body {
       padding-top: 60px;
+      font-family: 'Josefin Sans', sans-serif;
+      background-image: linear-gradient(rgba(0, 0, 15, .01), rgba(15, 15, 0, .01)),
+                  url("../concrete_seamless.png") repeat;
+      min-height: 100%;
+    }
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -37,21 +43,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand"><i class="fa fa-road" aria-hidden="true"></i>  streetside</a>
+        <a href="/" class="navbar-brand" ><i class="fa fa-road" aria-hidden="true"></i><strong>  streetside</strong></a>
       </div>
+      
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if current_user.present? %>
         <ul class="nav navbar-nav">
-          <li><a href="/visits">Visits</a></li>
-          <li><a href="/visitor_parking_permits">Visitors Parking Permits</a></li>
-          <li><a href="/vehicles">Vehicles</a></li>
+          <li><a href="/visits/new">Lend a Pass</a></li>
         </ul>
+        <% else %>
+        <% end %>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
             <li>
-              <a href="/users/edit">
+              <a href="/users/<%= current_user.id %>">
                 <%= current_user.username %>
               </a>
             </li>
@@ -93,6 +101,15 @@
         <%= alert %>
       </div>
     <% end %>
+
+<% if current_user.present? %>
+<ul class="nav nav-tabs" position="fixed">
+  <li role="presentation" ><a href="/vehicles">My Vehicles</a></li>
+  <li role="presentation"><a href="/parking_permits">My Parking Permits</a></li>
+  <li role="presentation"><a href="/lending_history">My Lending History</a></li>
+</ul>
+<% else %>
+<% end %>
 
     <%= yield %>
   </div>
