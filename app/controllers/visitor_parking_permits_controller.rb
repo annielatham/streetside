@@ -37,6 +37,7 @@ class VisitorParkingPermitsController < ApplicationController
     @visitor_parking_permit.resident_id = params[:resident_id]
     @visitor_parking_permit.purchase_date = params[:purchase_date]
     @visitor_parking_permit.expiration_date = params[:expiration_date]
+    # @visitor_parking_permit.activation_code = params[:activation_code]
 
     save_status = @visitor_parking_permit.save
 
@@ -45,7 +46,7 @@ class VisitorParkingPermitsController < ApplicationController
 
       case referer
       when "/visitor_parking_permits/new", "/create_visitor_parking_permit"
-        redirect_to("/visitor_parking_permits")
+        redirect_to("/parking_permits")
       else
         redirect_back(:fallback_location => "/", :notice => "Visitor parking permit created successfully.")
       end

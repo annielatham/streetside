@@ -14,5 +14,5 @@ class VisitorParkingPermit < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  # validates :activation_code, length: { is: 12, wrong_length: "invalid code"  }
 end

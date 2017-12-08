@@ -10,10 +10,10 @@
     <table class="table table-striped table-hover">
       <tr>
         <!--<th>Resident</th>-->
-        <th>Vehicle</th>
-        <th>Valid beginning</th>
-        <th>Expires</th>
-        <th></th>
+        <th class="col-sm-4">Vehicle</th>
+        <th class="col-sm-3">Valid beginning</th>
+        <th class="col-sm-3">Expires</th>
+        <th class="col-sm-2"></th>
       </tr>
 
       <% @resident_parking_permits.each do |resident_parking_permit| %>
@@ -63,10 +63,10 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Resident</th>
-        <th>Valid beginning</th>
-        <th>Expires</th>
-        <th>Actions</th>
+        <th class="col-sm-4">Valid block</th>
+        <th class="col-sm-3">Valid beginning</th>
+        <th class="col-sm-3">Expires</th>
+        <th class="col-sm-2"></th>
       </tr>
 
       <% @visitor_parking_permits.each do |visitor_parking_permit| %>
