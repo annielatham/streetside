@@ -1,72 +1,19 @@
 <div class="page-header">
-  <h3>
-    Resident Parking Permits  
-    <a href="/resident_parking_permits/new" class="btn btn-md btn-info pull-right">ADD</a>
-  </h3>
+  <h1>
+    Visitor parking permits
+    <a href="/visitor_parking_permits/new" class="btn btn-lg btn-success">New Visitor parking permit</a>
+  </h1>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <!--<th>Resident</th>-->
-        <th class="col-sm-4">Vehicle</th>
-        <th class="col-sm-3">Valid beginning</th>
-        <th class="col-sm-3">Expires</th>
-        <th class="col-sm-2"></th>
-      </tr>
-
-      <% @resident_parking_permits.each do |resident_parking_permit| %>
-      <tr>
-        <!--<td>-->
-        <!--  <#% if resident_parking_permit.resident_car_owner.present? %>-->
-        <!--    <a href="/users/<%= resident_parking_permit.resident_car_owner.id %>">-->
-        <!--      <#%= resident_parking_permit.resident_car_owner.username %>-->
-        <!--    </a>-->
-        <!--  <#% end %>-->
-        <!--</td>-->
-        <td>
-          <% if resident_parking_permit.permitted_resident_vehicle.present? %>
-            <a href="/vehicles/<%= resident_parking_permit.permitted_resident_vehicle.id %>">
-              <%= resident_parking_permit.permitted_resident_vehicle.nickname %>
-            </a>
-          <% end %>
-        </td>
-        <td><%= resident_parking_permit.valid_date.strftime("%A, %B %d, %Y") %></td>
-        <td><%= resident_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></td>
-        <td>
-          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-sm btn-success">Show</a>
-        
-          
-        <!--User cannot edit/delete permits-->
-          <!--<#% if current_user == resident_parking_permit.resident_car_owner %>-->
-          <!--  <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>-->
-          <!--  <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>-->
-          <!--<#% end %>-->
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <%= paginate @resident_parking_permits, theme: 'twitter-bootstrap-4' %>
-  </div>
-</div>
-<div></div>
-
-<div class="page-header">
-  <h3>
-    Visitor Parking Permits
-    <a href="/visitor_parking_permits/new" class="btn btn-md btn-info pull-right">ADD</a>
-  </h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th class="col-sm-4">Valid block</th>
-        <th class="col-sm-3">Valid beginning</th>
-        <th class="col-sm-3">Expires</th>
-        <th class="col-sm-2"></th>
+        <th>Resident</th>
+        <th>Purchase date</th>
+        <th>Expiration date</th>
+        <th>Activation code</th>
+        <th>Actions</th>
       </tr>
 
       <% @visitor_parking_permits.each do |visitor_parking_permit| %>
@@ -74,21 +21,20 @@
         <td>
           <% if visitor_parking_permit.resident_host.present? %>
             <a href="/users/<%= visitor_parking_permit.resident_host.id %>">
-              <%= visitor_parking_permit.resident_host.address_formatted_address %>
+              <%= visitor_parking_permit.resident_host.username %>
             </a>
           <% end %>
         </td>
-        <td><%= visitor_parking_permit.valid_date.strftime("%A, %B %d, %Y") %></td>
-        <td><%= visitor_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></td>
+        <td><%= visitor_parking_permit.purchase_date %></td>
+        <td><%= visitor_parking_permit.expiration_date %></td>
+        <td><%= visitor_parking_permit.activation_code %></td>
         <td>
-          <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-sm btn-success">Show</a>
-
-
-        <!--User cannot edit/delete permits-->
-          <!--<#% if current_user == visitor_parking_permit.resident_host %>-->
-          <!--  <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>-->
-          <!--  <a href="/delete_visitor_parking_permit/<%= visitor_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>-->
-          <!--<#% end %>-->
+          <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-primary">Show</a>
+          
+          <% if current_user == visitor_parking_permit.resident_host %>
+            <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_visitor_parking_permit/<%= visitor_parking_permit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

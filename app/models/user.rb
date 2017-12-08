@@ -41,6 +41,18 @@ class User < ApplicationRecord
 
   # Validations
 
+  validates :address, :presence => true
+
+  validates :first_name, :presence => true
+
+  validates :last_name, :presence => true
+
+  validates :username, :uniqueness => true
+
+  validates :username, :presence => true
+
+  validates :username, :length => { :minimum => 3, :maximum => 20 }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
