@@ -30,10 +30,10 @@
         <%= select_tag(:vehicle_id, options_from_collection_for_select(Vehicle.all, :id, :nickname, @resident_parking_permit.vehicle_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for valid_date -->
+      <!-- Label and input for purchase_date -->
       <div class="form-group">
-        <label for="valid_date" class="control-label">
-          Valid beginning
+        <label for="purchase_date" class="control-label">
+          Purchase date
         </label>
 
         <input type="text" id="purchase_date" name="purchase_date" placeholder="Purchase date" class="form-control" value="<%= @resident_parking_permit.purchase_date %>">
@@ -48,7 +48,16 @@
         <input type="text" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @resident_parking_permit.expiration_date %>">
       </div>
 
-      <button class="btn btn-info">
+      <!-- Label and input for activation_code -->
+      <div class="form-group">
+        <label for="activation_code" class="control-label">
+          Activation code
+        </label>
+
+        <input type="text" id="activation_code" name="activation_code" placeholder="Activation code" class="form-control" value="<%= @resident_parking_permit.activation_code %>">
+      </div>
+
+      <button class="btn btn-success">
         Create Resident Parking Permit
       </button>
       or

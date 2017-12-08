@@ -4,6 +4,7 @@ class CreateVisitorParkingPermits < ActiveRecord::Migration
       t.integer :resident_id
       t.date :purchase_date
       t.date :expiration_date
+      t.string :activation_code
 
       t.timestamps
 

@@ -9,11 +9,10 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Activate New Visitor Parking Permit</h3>
+  <h3>Add Visitor Parking Permit</h3>
 </div>
 
-<div>
-<div class="jumbotron">
+<div class="row">
   <div class="col-md-12">
     <form action="/create_visitor_parking_permit" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
@@ -22,29 +21,38 @@
       <!-- Label and input for resident_id -->
       <input type="hidden" name="resident_id" value="<%= current_user.id %>">
 
-      <!-- Label and input for valid_date -->
-      <input type="hidden" name="valid_date" value="2018-1-1">
-
-      <!-- Label and input for expiration_date -->
-        <input type="hidden" name="expiration_date" value="2018-12-31">
-      </div>
-
-      <!-- Label and input for activation code -->
+      <!-- Label and input for purchase_date -->
       <div class="form-group">
-        <label for="activation_code" class="control-label">
-          Activation Code
+        <label for="purchase_date" class="control-label">
+          Purchase date
         </label>
 
-        <input type="text" id="activation_code" name="activation_code" placeholder="Enter the permit code provided by your city" class="form-control" value="<%= @visitor_parking_permit.expiration_date %>">
+        <input type="text" id="purchase_date" name="purchase_date" placeholder="Purchase date" class="form-control" value="<%= @visitor_parking_permit.purchase_date %>">
+      </div>
+
+      <!-- Label and input for expiration_date -->
+      <div class="form-group">
+        <label for="expiration_date" class="control-label">
+          Expiration date
+        </label>
+
+        <input type="text" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @visitor_parking_permit.expiration_date %>">
+      </div>
+
+      <!-- Label and input for activation_code -->
+      <div class="form-group">
+        <label for="activation_code" class="control-label">
+          Activation code
+        </label>
+
+        <input type="text" id="activation_code" name="activation_code" placeholder="Activation code" class="form-control" value="<%= @visitor_parking_permit.activation_code %>">
       </div>
 
       <button class="btn btn-success">
-        Submit
+        Create Visitor Parking Permit
       </button>
       or
       <a href="/visitor_parking_permits">Cancel</a>
     </form>
   </div>
 </div>
-</div>
-

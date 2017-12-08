@@ -48,6 +48,15 @@
         <input type="text" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @resident_parking_permit.expiration_date %>">
       </div>
 
+      <!-- Label and input for activation_code -->
+      <div class="form-group">
+        <label for="activation_code" class="control-label">
+          Activation code
+        </label>
+
+        <input type="text" id="activation_code" name="activation_code" placeholder="Activation code" class="form-control" value="<%= @resident_parking_permit.activation_code %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Resident Parking Permit
       </button>
