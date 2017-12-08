@@ -5,9 +5,8 @@
   <link rel="icon" href="assets/images/favicon.ico">
   <title>streetside</title>
 
-
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-  <link href="app/assets/stylesheets/bootstrap.css" rel="stylesheet"/>
+  <!--<link href="app/assets/stylesheets/bootstrap.css" rel="stylesheet"/>-->
   <!--<link href="assets/stylesheets/custom.css" rel="stylesheet"/>-->
   <!--<link href="assets/stylesheets/landing-page.css" rel="stylesheet"/>  -->
 
@@ -20,9 +19,6 @@
     
     body {
       padding-top: 100px;
-      font-family: 'Palanquin', sans-serif;
-      min-height: 100%;
-      background-image: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png") repeat;
     }
   </style>
 
@@ -34,54 +30,55 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="/" class="navbar-brand" ><i class="fa fa-road" aria-hidden="true"></i><strong>  streetside</strong></a>
+        <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+        <!--  <span class="sr-only">Toggle navigation</span>-->
+        <!--  <span class="icon-bar"></span>-->
+        <!--  <span class="icon-bar"></span>-->
+        <!--  <span class="icon-bar"></span>-->
+        <!--</button>-->
+        <a href="/" class="navbar-brand"><font color="seagreen"><i class="fa fa-road" aria-hidden="true"></i> StreetSide</font></a>
       </div>
       
 
+
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <% if current_user.present? %>
-        <ul class="nav navbar-nav">
-          <li><a href="/visits/new">Lend a Pass</a></li>
-        </ul>
-        <% else %>
-        <% end %>
+
+
+
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
+            <ul class="nav navbar-nav">
+              <li><a href="/visits/new">lend a pass</a></li>
+            </ul>
             <li>
               <a href="/users/<%= current_user.id %>">
                 <%= current_user.username %>
               </a>
             </li>
-
             <li>
               <a href="/users/sign_out" data-method="delete" rel="nofollow">
-                Sign Out
+                sign out
               </a>
             </li>
           <% else %>
             <li>
               <a href="/users/sign_up">
-                Sign Up
+                sign up
               </a>
             </li>
 
             <li>
               <a href="/users/sign_in">
-                Sign In
+                sign in
               </a>
             </li>
           <% end %>
@@ -114,7 +111,9 @@
 <% else %>
 <% end %>
 
+<div>
+
     <%= yield %>
-  </div>
+  </div></div>
 </body>
 </html>
