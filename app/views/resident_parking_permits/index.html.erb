@@ -13,6 +13,7 @@
         <th>Vehicle</th>
         <th>Purchase date</th>
         <th>Expiration date</th>
+        <th>Activation code</th>
         <th>Actions</th>
       </tr>
 
@@ -34,6 +35,7 @@
         </td>
         <td><%= resident_parking_permit.purchase_date %></td>
         <td><%= resident_parking_permit.expiration_date %></td>
+        <td><%= resident_parking_permit.activation_code %></td>
         <td>
           <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">Show</a>
           

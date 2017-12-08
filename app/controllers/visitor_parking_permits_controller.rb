@@ -10,12 +10,10 @@ class VisitorParkingPermitsController < ApplicationController
   end
 
   def index
-    @r = ResidentParkingPermit.ransack(params[:r])
-      @resident_parking_permits = @r.result(:distinct => true).includes(:resident_car_owner, :permitted_resident_vehicle).page(params[:page]).per(10)
-    @v = current_user.visitor_parking_permits.ransack(params[:v])
-      @visitor_parking_permits = @v.result(:distinct => true).includes(:resident_host, :assigned_visits).page(params[:page]).per(10)
-    
-    render("parking_permits/index.html.erb")
+    @q = current_user.visitor_parking_permits.ransack(params[:q])
+      @visitor_parking_permits = @q.result(:distinct => true).includes(:resident_host, :assigned_visits).page(params[:page]).per(10)
+
+    render("visitor_parking_permits/index.html.erb")
   end
 
   def show
@@ -37,7 +35,7 @@ class VisitorParkingPermitsController < ApplicationController
     @visitor_parking_permit.resident_id = params[:resident_id]
     @visitor_parking_permit.purchase_date = params[:purchase_date]
     @visitor_parking_permit.expiration_date = params[:expiration_date]
-    # @visitor_parking_permit.activation_code = params[:activation_code]
+    @visitor_parking_permit.activation_code = params[:activation_code]
 
     save_status = @visitor_parking_permit.save
 
@@ -46,7 +44,7 @@ class VisitorParkingPermitsController < ApplicationController
 
       case referer
       when "/visitor_parking_permits/new", "/create_visitor_parking_permit"
-        redirect_to("/parking_permits")
+        redirect_to("/visitor_parking_permits")
       else
         redirect_back(:fallback_location => "/", :notice => "Visitor parking permit created successfully.")
       end
@@ -65,6 +63,7 @@ class VisitorParkingPermitsController < ApplicationController
     @visitor_parking_permit = VisitorParkingPermit.find(params[:id])
     @visitor_parking_permit.purchase_date = params[:purchase_date]
     @visitor_parking_permit.expiration_date = params[:expiration_date]
+    @visitor_parking_permit.activation_code = params[:activation_code]
 
     save_status = @visitor_parking_permit.save
 
