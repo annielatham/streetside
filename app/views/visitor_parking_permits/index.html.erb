@@ -32,8 +32,8 @@
             </a>
           <% end %>
         </td>
-        <td><%= resident_parking_permit.purchase_date.strftime("%A, %B %d, %Y") %></td>
-        <td><%= resident_parking_permit.expiration_date %></td>
+        <td><%= resident_parking_permit.valid_date.strftime("%A, %B %d, %Y") %></td>
+        <td><%= resident_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></td>
         <td>
           <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-sm btn-success">Show</a>
         
@@ -78,8 +78,8 @@
             </a>
           <% end %>
         </td>
-        <td><%= visitor_parking_permit.purchase_date.strftime("%A, %B %d, %Y") %></td>
-        <td><%= visitor_parking_permit.expiration_date %></td>
+        <td><%= visitor_parking_permit.valid_date.strftime("%A, %B %d, %Y") %></td>
+        <td><%= visitor_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></td>
         <td>
           <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-sm btn-success">Show</a>
 

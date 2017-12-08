@@ -30,10 +30,10 @@
         <%= select_tag(:vehicle_id, options_from_collection_for_select(Vehicle.all, :id, :nickname, @resident_parking_permit.vehicle_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for purchase_date -->
+      <!-- Label and input for valid_date -->
       <div class="form-group">
-        <label for="purchase_date" class="control-label">
-          Purchase date
+        <label for="valid_date" class="control-label">
+          Valid beginning
         </label>
 
         <input type="text" id="purchase_date" name="purchase_date" placeholder="Purchase date" class="form-control" value="<%= @resident_parking_permit.purchase_date %>">
