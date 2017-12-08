@@ -16,4 +16,18 @@ class Vehicle < ApplicationRecord
 
   # Validations
 
+  validates :color, :presence => true
+
+  validates :make, :presence => true
+
+  validates :model, :presence => true
+
+  validates :nickname, :uniqueness => { :scope => [:make] }
+
+  validates :nickname, :presence => true
+
+  validates :nickname, :length => { :minimum => 3, :maximum => 9 }
+
+  validates :year, :presence => true
+
 end
